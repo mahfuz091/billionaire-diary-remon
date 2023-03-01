@@ -39,7 +39,7 @@ const showUserRandom =(data)=>{
         <tr>
             <td>${bilioner.person.name}</td>
             <td>${bilioner.countryOfCitizenship}</td>
-            <td>${bilioner.industries[0]} <i onclick="loadSingleBilioner()" class="fas fa-eye"></i></td>
+            <td>${bilioner.industries[0]} <i onclick="loadSingleBilioner(${bilioner.rank})" data-bs-toggle="modal" data-bs-target="#bilionerModal" class="fas fa-eye"></i></td>
             <td>${bilioner.rank}</td>
             <td>${bilioner.finalWorth.toFixed(2)}</td>
             </tr>
@@ -64,17 +64,62 @@ function getMultipleRandom(items, num) {
     return shuffled.slice(0, num);
   }
 
-const loadSingleBilioner= () =>{
+const loadSingleBilioner= (id) =>{
     fetch("json/getallBilioner.json")
     .then(res=>res.json())
-    .then(data=>showUDataUser(data))
+    .then(data=>showUniqueUserData(data, id))
 
   }
-  const showUDataUser=data=>{
-    // console.log(data.rank)
-    data.forEach(user=>{
-        // console.log(user[0])  
-    })
+  const showUniqueUserData=(data, id)=>{
+    // console.log(data, id)
+
+    let result = data.find(item => item.rank=== id);
+    console.log(result)
+    const modalBody = document.getElementById("modal-bilioner");
+    modalBody.innerHTML="";
+    modalBody.innerHTML += `
+    
+            <div class="modal-content">
+                <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="bilioner-title">${result.person.name}</h1>
+                <h5 class="bilioner-sub-title">Biography</h5>
+                <p class="bilioner-description">Jeff Bezos founded e-com… chairman in July 2021. He now owns a bit less than 10% of the company. He and his wife MacKenzi…6% Amazon stake to her. Bezos has donated more t… received those shares. Bezos owns The Washingto…ce in one in July 2021. Bezos said in a November…sing specific details.</p>
+
+                <div class="modal-body d-flex gap-4 mx-auto">
+                    <div >
+                        <img class="modal-img" src="${result.squareImage}" alt="">
+                        <div class="modal-source">
+                            <p>Source: <span>Amazon</span></p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="general-info">
+                            <h2>General Information</h2>
+                            <hr>
+                            <p>Citizenship: <span>${result.countryOfCitizenship}</span></p>
+                            <p>State: <span>${result.state}</span></p>
+                            <p>City: <span>${result.city}</span></p>
+                            <p>Birthday: <span>United States</span></p>
+                            <p>Gender: <span>United States</span></p>
+
+
+                        </div>
+                        <div class="financial-info">
+                            <h2>Financial Information</h2>
+                            <hr>
+                            <p>Citizenship: <span>United States</span></p>
+                            <p>City: <span>United States</span></p>
+                            <p>Birthday: <span>United States</span></p>
+                            <p>Gender: <span>United States</span></p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        
+    `
   }
 const richestByIndustry =()=>{
     window.location.href = "index2.html"

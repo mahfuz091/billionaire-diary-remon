@@ -10,27 +10,34 @@ const loadRichestByIndustry= () =>{
     const sliceData = data.slice(0, 9)
     const cardContainer = document.getElementById('card-container')
     sliceData.forEach(singleBilioner=>{
-        console.log(singleBilioner.squareImage)
+        console.log(singleBilioner)
         cardContainer.innerHTML += `
-        <div class ="col">
-        <div class="card mb-3">
-            <div class="row g-0">
-                <div class="col-md-4">
-            <img src="${singleBilioner.squareImage}" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-        </div>
+        <div class="col">
+                <div class="card mb-3">
+                    <div class=" row g-2">
+                        <h2 class="text-center c-title">${singleBilioner.person.name}</h2>
+                        <div class="col-md-4">
+                            <img src="${singleBilioner.squareImage}" class="img-fluid px-2  c-img" ; alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body mb-4">
+                                <p>Citizenship: <span>${singleBilioner.countryOfCitizenship}</span></p>
+                                <p>State: <span>${singleBilioner.state}</span></p>
+                                <p>City: <span>${singleBilioner.city}</span></p>
+                                <p>Total Share: <span>${singleBilioner.financialAssets[0].numberOfShares}</span></p>
+                                <p>Share Price: <span>$${singleBilioner.financialAssets[0].sharePrice}</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         
         `
 
     })
   }
-//   loadRichestByIndustry()
+  loadRichestByIndustry()
+  const loadPreviousPage=()=>{
+    window.location.href = "index.html"
+  }
