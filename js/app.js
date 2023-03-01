@@ -74,7 +74,14 @@ const loadSingleBilioner= (id) =>{
     // console.log(data, id)
 
     let result = data.find(item => item.rank=== id);
-    console.log(result)
+    console.log(result.birthDate)
+    const date = new Date(result.birthDate);
+    const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    const bitrthday = month[date.getMonth()] +", "+ date.getDate() + " " + date.getFullYear()
+
+    
+  
+   
     const modalBody = document.getElementById("modal-bilioner");
     modalBody.innerHTML="";
     modalBody.innerHTML += `
@@ -99,18 +106,18 @@ const loadSingleBilioner= (id) =>{
                             <p>Citizenship: <span>${result.countryOfCitizenship}</span></p>
                             <p>State: <span>${result.state}</span></p>
                             <p>City: <span>${result.city}</span></p>
-                            <p>Birthday: <span>United States</span></p>
-                            <p>Gender: <span>United States</span></p>
+                            <p>Birthday: <span>${bitrthday}</span></p>
+                            <p>Gender: <span>${result.gender}</span></p>
 
 
                         </div>
                         <div class="financial-info">
                             <h2>Financial Information</h2>
                             <hr>
-                            <p>Citizenship: <span>United States</span></p>
-                            <p>City: <span>United States</span></p>
-                            <p>Birthday: <span>United States</span></p>
-                            <p>Gender: <span>United States</span></p>
+                            <p>Exchange: <span>${result.financialAssets? result.financialAssets[0].exchange : "no data available"}</span></p>
+                            <p>Ticker: <span>${result.financialAssets? result.financialAssets[0].ticker : "no data available"}</span></p>
+                            <p>Total Shares: <span>${result.financialAssets? result.financialAssets[0].numberOfShares : "no data available"}</span></p>
+                            <p>Share Price: <span>${result.financialAssets? result.financialAssets[0].sharePrice :"no data available"}</span></p>
 
 
                         </div>
