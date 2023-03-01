@@ -73,11 +73,10 @@ const loadSingleBilioner= () =>{
   const showUDataUser=data=>{
     // console.log(data.rank)
     data.forEach(user=>{
-        console.log(user[0])  
+        // console.log(user[0])  
     })
   }
+const richestByIndustry =()=>{
+    window.location.href = "index2.html"
+}
 
-const loadRichestByIndustry= () =>{
-    
-
-  }
