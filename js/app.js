@@ -130,7 +130,7 @@ const richestByIndustry =()=>{
     window.location.href = "index2.html"
 }
 const richestByStates =()=>{
-    window.location.href = "index.html"
+    window.location.href = "index3.html"
 }
 
 // 
