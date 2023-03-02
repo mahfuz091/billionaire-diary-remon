@@ -10,8 +10,15 @@
 //   }
 
 //   console.log(getMultipleRandom(items, 3));
-let date = new Date(-647049600000)
-console.log(date)
-const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] 
-const bitrthday = month[date.getMonth()] +", "+ date.getDate() + " " + date.getFullYear()
-console.log(bitrthday)
+// let date = new Date(-647049600000)
+// console.log(date)
+// const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] 
+// const bitrthday = month[date.getMonth()] +", "+ date.getDate() + " " + date.getFullYear()
+// console.log(bitrthday)
+
+// const num = [20, 25 , 30, 25]
+// const sum = num.reduce((a, value)=>{
+//     return a + value;
+// })
+
+// console.log(sum)
